@@ -32,20 +32,19 @@ public class Juego extends Application
     }
 
     /**
-     * Sobreescribimos el metodo start de la clase Appication
+     * Sobreescribimos el metodo start de la clase Application
      */
     @Override
     public void start(Stage escenario){
         crearCampo();
-        escenario.setTitle("EL CLASICO PONG HEHCO POR MARCOS"); //Ponemos titulo a la ventana.
+        escenario.setTitle("EL CLASICO PONG HECHO POR MARCOS"); //Ponemos titulo a la ventana.
         escenario.setScene(escena); //Introducimos la escena en el escenario.
         escenario.show(); //Lo mostramos
         AnimationTimer animacion = new AnimationTimer(){
                 @Override
                 public void handle(long now){
-                    
                     BOLA.mover();
-                };
+                }
             };
         animacion.start();
 

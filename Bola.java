@@ -28,10 +28,19 @@ public class Bola extends Circle
     }
     
     /**
-     * Este metodo mueve la bola un pixel cada vez que se ejecuta.
+     * Este metodo mueve la bola cada vez que se ejecuta.
      */
     public void mover(){
         setTranslateX(getTranslateX() + velocidadX);
         setTranslateY(getTranslateY() + velocidadY);
+        //Controlamos que si la bola se pierde vuelva a aparecer en el centro de nuevo.
+        if(getTranslateX() > Juego.getAnchuraCampo() || getTranslateX() < 0){
+            setTranslateX(INICIAL_X);
+        }
+        //Controlamos que rebote arriba y abajo
+        if(getBoundsInParent().getMaxY() > Juego.getAlturaCampo() || 
+        getBoundsInParent().getMinY() < Juego.getAlturaCampo()){
+            velocidadY = -velocidadY;
+        }
     }
 }
