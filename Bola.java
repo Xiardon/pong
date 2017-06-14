@@ -37,10 +37,22 @@ public class Bola extends Circle
         if(getTranslateX() > Juego.getAnchuraCampo() || getTranslateX() < 0){
             setTranslateX(INICIAL_X);
         }
+        comprobarColision();
         //Controlamos que rebote arriba y abajo
         if(getBoundsInParent().getMaxY() > Juego.getAlturaCampo() || 
         getBoundsInParent().getMinY() < Juego.getAlturaCampo()){
             velocidadY = -velocidadY;
+        }
+    }
+    
+    /**
+     * Metodo que comprueba si la bola colisiona con algun obejto y cambia la orientacion de la direccion
+     * en funcion de que golpee.
+     */
+    private void comprobarColision(){
+        if(getBoundsInParent().intersects(Juego.getJugador(1).getBoundsInParent()) || 
+        getBoundsInParent().intersects(Juego.getJugador(2).getBoundsInParent())){
+            velocidadX = -velocidadX;
         }
     }
 }

@@ -19,8 +19,8 @@ public class Juego extends Application
     private static Group grupo; //El grupo principal donde añadiremos los elementos del juego.
     private static int numeroJugadores;
     //Los jugadores.
-    private  Jugador jugador1;
-    private  Jugador jugador2;
+    private static Jugador jugador1;
+    private static Jugador jugador2;
 
     /**
      * Constructor de nuestra clase
@@ -80,6 +80,19 @@ public class Juego extends Application
             numeroJugadores++;
         }
         grupo.getChildren().addAll(jugador1, jugador2);
+    }
+    
+    /**
+     * Metodo al que se le pasa por parametro el numero de jugador y nos lo devuelve.
+     */
+    public static Jugador getJugador(int numeroJugador){
+        Jugador jugador = null;
+        if(numeroJugador == 1){
+            jugador = jugador1;
+        }else{
+            jugador = jugador2;
+        }
+        return jugador;
     }
 
     public static int getAnchuraCampo(){

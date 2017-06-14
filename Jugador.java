@@ -13,7 +13,7 @@ public class Jugador extends Rectangle
     private static final int ALTURA_JUGADOR = 30;
     private int puntuacion;
     private int posicionInicialX;
-    private int POSICION_INCIAL_Y = Juego.getAlturaCampo() / 2;
+    private final int POSICION_INCIAL_Y = Juego.getAlturaCampo() / 2 - (ALTURA_JUGADOR / 2);
     private Color color;
     
     /**
