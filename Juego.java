@@ -5,6 +5,7 @@ import javafx.scene.paint.*;
 import javafx.scene.shape.*;
 import javafx.animation.*;
 import javafx.scene.control.*;
+import javafx.scene.text.*;
 /**
  * Esta es la clase principal que se encargara de lanzar el juego y crear el campo.
  * 
@@ -47,6 +48,7 @@ public class Juego extends Application
     public void start(Stage escenario){
         crearCampo();
         crearJugadores();
+        crearMarcadores();
         escenario.setTitle("EL CLASICO PONG HECHO POR MARCOS"); //Ponemos titulo a la ventana.
         escenario.setScene(escena); //Introducimos la escena en el escenario.
         escenario.show(); //Lo mostramos
@@ -56,6 +58,7 @@ public class Juego extends Application
                     BOLA.mover();
                     jugador1.mover();
                     jugador2.mover();
+                    actualizarMarcadores();
                 }
             };
         animacion.start();
@@ -137,8 +140,26 @@ public class Juego extends Application
      * Metodo que crea los marcadores y los añade al campo.
      */
     private void crearMarcadores(){
-        marcadorJugador1 = new Label();
-        marcadorJugador2 = new Label();
+        marcadorJugador1 = new Label("JUGADOR 1   " + String.valueOf(jugador1.getPuntuacion()));
+        marcadorJugador1.setTranslateX(Juego.getAnchuraCampo() / 6);
+        marcadorJugador1.setTranslateY(10);
+        marcadorJugador1.setTextFill(jugador1.getColor());
+        marcadorJugador1.setFont(Font.font(15));
         
+        marcadorJugador2 = new Label("JUGADOR 2   " + String.valueOf(jugador2.getPuntuacion()));
+        marcadorJugador2.setTranslateX(Juego.getAnchuraCampo() - (Juego.getAnchuraCampo() / 3));
+        marcadorJugador2.setTranslateY(10);
+        marcadorJugador2.setTextFill(jugador2.getColor());
+        marcadorJugador2.setFont(Font.font(15));
+        grupo.getChildren().addAll(marcadorJugador1, marcadorJugador2);
+        
+    }
+    
+    /**
+     * Metodo que actualiza el resultado mostrado en los marcadores.
+     */
+    private void actualizarMarcadores(){
+        marcadorJugador1.setText("JUGADOR 1   " + String.valueOf(jugador1.getPuntuacion()));
+        marcadorJugador2.setText("JUGADOR 2   " + String.valueOf(jugador2.getPuntuacion()));
     }
 }

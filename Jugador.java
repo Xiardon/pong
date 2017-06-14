@@ -55,7 +55,7 @@ public class Jugador extends Rectangle
      */
     public void moverArriba(){
         if(getBoundsInParent().getMinY() > 0){
-            velocidad = -2;
+            velocidad = -3;
         }
         
     }
@@ -65,8 +65,23 @@ public class Jugador extends Rectangle
      */
     public void moverAbajo(){
         if(getBoundsInParent().getMaxY() < Juego.getAlturaCampo()){
-            velocidad = 2;
+            velocidad = 3;
         }
         
+    }
+    
+    public int getPuntuacion(){
+        return puntuacion;
+    }
+    
+    public Color getColor(){
+        return color;
+    }
+    
+    /**
+     * Este metodo suma un punto al jugador.
+     */
+    public void sumarPunto(){
+        puntuacion++;
     }
 }

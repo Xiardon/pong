@@ -28,14 +28,18 @@ public class Bola extends Circle
     }
     
     /**
-     * Este metodo mueve la bola cada vez que se ejecuta.
+     * Este metodo mueve la bola cada vez que se ejecuta, la regenera si se pierde y suma el punto al jugador correspondiente.
      */
     public void mover(){
         setTranslateX(getTranslateX() + velocidadX);
         setTranslateY(getTranslateY() + velocidadY);
         //Controlamos que si la bola se pierde vuelva a aparecer en el centro de nuevo.
-        if(getTranslateX() > Juego.getAnchuraCampo() || getTranslateX() < 0){
+        if(getTranslateX() > Juego.getAnchuraCampo()){
             setTranslateX(INICIAL_X);
+            Juego.getJugador(1).sumarPunto();
+        }else if(getTranslateX() < 0){
+            setTranslateX(INICIAL_X);
+            Juego.getJugador(2).sumarPunto();
         }
         comprobarColision();
        
