@@ -23,7 +23,7 @@ public class Bola extends Circle
         setFill(COLOR);
         setTranslateX(INICIAL_X);
         setTranslateY(INICIAL_Y);
-        velocidadX = 1;
+        velocidadX = 3;
         velocidadY = 3;
     }
     

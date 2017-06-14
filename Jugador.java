@@ -43,9 +43,10 @@ public class Jugador extends Rectangle
     public void mover(){
         setTranslateY(getTranslateY() + velocidad);
         //Comprobamos si el jugador llega a los limites del campo no le permitimos moverse.
-        if(getBoundsInParent().getMinY() == 0 || getBoundsInParent().getMaxY() == Juego.getAlturaCampo()){
+        if(getBoundsInParent().getMinY() <= 0 || getBoundsInParent().getMaxY() >= Juego.getAlturaCampo()){
             velocidad = 0;
         }
+        
         
     }
     
@@ -53,15 +54,13 @@ public class Jugador extends Rectangle
      * Metodo que cambia la orienctacion del movimiento hacia arriba.
      */
     public void moverArriba(){
-        velocidad = -1;
-        mover();
+        velocidad = -2;
     }
     
     /**
      * Metodo que cambia la orientacion del movimiento hacia abajo.
      */
     public void moverAbajo(){
-        velocidad = 1;
-        mover();
+        velocidad = 2;
     }
 }
