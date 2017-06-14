@@ -50,9 +50,31 @@ public class Juego extends Application
                 @Override
                 public void handle(long now){
                     BOLA.mover();
+                    jugador1.mover();
+                    jugador2.mover();
                 }
             };
         animacion.start();
+        
+        escena.setOnKeyPressed(event -> {
+            switch(event.getCode()){
+                case UP:
+                jugador1.moverArriba();
+                break;
+                
+                case DOWN:
+                jugador1.moverAbajo();
+                break;
+                
+                case W:
+                jugador2.moverArriba();
+                break;
+                
+                case S:
+                jugador2.moverAbajo();
+                break;
+            }
+            });
 
     }
 
@@ -66,7 +88,7 @@ public class Juego extends Application
         lineaCentral.setTranslateX(ANCHURA_CAMPO / 2);
         grupo.getChildren().addAll(lineaCentral, BOLA);
     }
-    
+
     /**
      * Metodo que crea los jugadores.
      */
@@ -81,7 +103,7 @@ public class Juego extends Application
         }
         grupo.getChildren().addAll(jugador1, jugador2);
     }
-    
+
     /**
      * Metodo al que se le pasa por parametro el numero de jugador y nos lo devuelve.
      */
@@ -102,7 +124,7 @@ public class Juego extends Application
     public static int getAlturaCampo(){
         return ALTURA_CAMPO;
     }
-    
+
     public static int getNumeroJugadores(){
         return numeroJugadores;
     }

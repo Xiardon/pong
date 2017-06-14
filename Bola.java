@@ -24,7 +24,7 @@ public class Bola extends Circle
         setTranslateX(INICIAL_X);
         setTranslateY(INICIAL_Y);
         velocidadX = 1;
-        velocidadY = 0;
+        velocidadY = 3;
     }
     
     /**
@@ -38,11 +38,7 @@ public class Bola extends Circle
             setTranslateX(INICIAL_X);
         }
         comprobarColision();
-        //Controlamos que rebote arriba y abajo
-        if(getBoundsInParent().getMaxY() > Juego.getAlturaCampo() || 
-        getBoundsInParent().getMinY() < Juego.getAlturaCampo()){
-            velocidadY = -velocidadY;
-        }
+       
     }
     
     /**
@@ -50,6 +46,13 @@ public class Bola extends Circle
      * en funcion de que golpee.
      */
     private void comprobarColision(){
+         //Controlamos que rebote arriba y abajo
+        if(getBoundsInParent().getMaxY() >= Juego.getAlturaCampo() || 
+         getBoundsInParent().getMinY() < 0){
+            velocidadY = -velocidadY;
+        }
+        
+        //Comprobamos si la bola rebota en algun jugador.
         if(getBoundsInParent().intersects(Juego.getJugador(1).getBoundsInParent()) || 
         getBoundsInParent().intersects(Juego.getJugador(2).getBoundsInParent())){
             velocidadX = -velocidadX;

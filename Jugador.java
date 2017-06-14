@@ -15,6 +15,7 @@ public class Jugador extends Rectangle
     private int posicionInicialX;
     private final int POSICION_INCIAL_Y = Juego.getAlturaCampo() / 2 - (ALTURA_JUGADOR / 2);
     private Color color;
+    private int velocidad;
     
     /**
      * Constructor de la clase.
@@ -33,5 +34,34 @@ public class Jugador extends Rectangle
         }
         setFill(color);
         setTranslateX(posicionInicialX);
+        velocidad = 0;
+    }
+    
+    /**
+     * Metodo que mueve al jugador y le da velocidad
+     */
+    public void mover(){
+        setTranslateY(getTranslateY() + velocidad);
+        //Comprobamos si el jugador llega a los limites del campo no le permitimos moverse.
+        if(getBoundsInParent().getMinY() == 0 || getBoundsInParent().getMaxY() == Juego.getAlturaCampo()){
+            velocidad = 0;
+        }
+        
+    }
+    
+    /**
+     * Metodo que cambia la orienctacion del movimiento hacia arriba.
+     */
+    public void moverArriba(){
+        velocidad = -1;
+        mover();
+    }
+    
+    /**
+     * Metodo que cambia la orientacion del movimiento hacia abajo.
+     */
+    public void moverAbajo(){
+        velocidad = 1;
+        mover();
     }
 }
