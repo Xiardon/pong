@@ -17,6 +17,10 @@ public class Juego extends Application
     private static final Bola BOLA = new Bola(); //La bola del juego.
     private static Scene escena; //La escena que introduciremos en nuestro escenario.
     private static Group grupo; //El grupo principal donde añadiremos los elementos del juego.
+    private static int numeroJugadores;
+    //Los jugadores.
+    private  Jugador jugador1;
+    private  Jugador jugador2;
 
     /**
      * Constructor de nuestra clase
@@ -24,6 +28,7 @@ public class Juego extends Application
     public Juego(){
         grupo = new Group();
         escena = new Scene(grupo, ANCHURA_CAMPO, ALTURA_CAMPO);
+        numeroJugadores = 0;
 
     }
 
@@ -37,6 +42,7 @@ public class Juego extends Application
     @Override
     public void start(Stage escenario){
         crearCampo();
+        crearJugadores();
         escenario.setTitle("EL CLASICO PONG HECHO POR MARCOS"); //Ponemos titulo a la ventana.
         escenario.setScene(escena); //Introducimos la escena en el escenario.
         escenario.show(); //Lo mostramos
@@ -51,14 +57,29 @@ public class Juego extends Application
     }
 
     /**
-     * Este metodo crea el campo y lo añade al grupo, en este caso utilizamos la escena como campo
-     * y lo personalizamos.
+     * Este metodo crea el campo y lo añade al grupo junto con sus elementis, en este caso 
+     * utilizamos la escena como campo y lo personalizamos.
      */
     private void crearCampo(){
         escena.setFill(Color.SPRINGGREEN); //El fondo de la escena servira como campo verde.
         Rectangle lineaCentral = new Rectangle(3, ALTURA_CAMPO, Color.WHITE);
         lineaCentral.setTranslateX(ANCHURA_CAMPO / 2);
         grupo.getChildren().addAll(lineaCentral, BOLA);
+    }
+    
+    /**
+     * Metodo que crea los jugadores.
+     */
+    private void crearJugadores(){
+        while(numeroJugadores < 2){
+            if(numeroJugadores == 0){
+                jugador1 = new Jugador();
+            }else{
+                jugador2 = new Jugador();
+            }
+            numeroJugadores++;
+        }
+        grupo.getChildren().addAll(jugador1, jugador2);
     }
 
     public static int getAnchuraCampo(){
@@ -67,5 +88,9 @@ public class Juego extends Application
 
     public static int getAlturaCampo(){
         return ALTURA_CAMPO;
+    }
+    
+    public static int getNumeroJugadores(){
+        return numeroJugadores;
     }
 }
