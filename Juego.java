@@ -4,6 +4,7 @@ import javafx.stage.*;
 import javafx.scene.paint.*;
 import javafx.scene.shape.*;
 import javafx.animation.*;
+import javafx.scene.control.*;
 /**
  * Esta es la clase principal que se encargara de lanzar el juego y crear el campo.
  * 
@@ -21,6 +22,9 @@ public class Juego extends Application
     //Los jugadores.
     private static Jugador jugador1;
     private static Jugador jugador2;
+    private Label marcadorJugador1;
+    private Label marcadorJugador2;
+    
 
     /**
      * Constructor de nuestra clase
@@ -127,5 +131,14 @@ public class Juego extends Application
 
     public static int getNumeroJugadores(){
         return numeroJugadores;
+    }
+    
+    /**
+     * Metodo que crea los marcadores y los añade al campo.
+     */
+    private void crearMarcadores(){
+        marcadorJugador1 = new Label();
+        marcadorJugador2 = new Label();
+        
     }
 }

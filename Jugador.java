@@ -16,6 +16,7 @@ public class Jugador extends Rectangle
     private final int POSICION_INCIAL_Y = Juego.getAlturaCampo() / 2 - (ALTURA_JUGADOR / 2);
     private Color color;
     private int velocidad;
+    private boolean colision;
     
     /**
      * Constructor de la clase.
@@ -35,6 +36,7 @@ public class Jugador extends Rectangle
         setFill(color);
         setTranslateX(posicionInicialX);
         velocidad = 0;
+        colision = false;
     }
     
     /**
@@ -46,21 +48,25 @@ public class Jugador extends Rectangle
         if(getBoundsInParent().getMinY() <= 0 || getBoundsInParent().getMaxY() >= Juego.getAlturaCampo()){
             velocidad = 0;
         }
-        
-        
     }
     
     /**
      * Metodo que cambia la orienctacion del movimiento hacia arriba.
      */
     public void moverArriba(){
-        velocidad = -2;
+        if(getBoundsInParent().getMinY() > 0){
+            velocidad = -2;
+        }
+        
     }
     
     /**
      * Metodo que cambia la orientacion del movimiento hacia abajo.
      */
     public void moverAbajo(){
-        velocidad = 2;
+        if(getBoundsInParent().getMaxY() < Juego.getAlturaCampo()){
+            velocidad = 2;
+        }
+        
     }
 }
