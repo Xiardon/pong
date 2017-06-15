@@ -1,14 +1,27 @@
-------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all he/she needs to know. The comments should usually include at least:
-------------------------------------------------------------------------
+# Project Name
+PONG
+Es el clasico juego Pong para dos jugadores.
 
-PROJECT TITLE: PONG.
-PURPOSE OF PROJECT: PROYECTO FINAL PROGRAMACION DAM 1.
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS: MARCOS ALVAREZ VARELA.
-USER INSTRUCTIONS:
-Es el clasico juego Pong para dos jugadores, uno controla su barra con las teclas "flecha arriba/abajo" y el otro con "a/s".
-Cada vez que un jugador falle al devolver una pelota y esta se pierda por el fondo del campo sumara un punto al jugador contrario.
+
+## Installation
+
+No es necesario instalar nada ya que se ejecuta directamente desde BlueJ.
+
+## Usage
+
+Un controla su barra con las teclas "flecha arriba/abajo" y el otro con "a/s". Cada vez que un jugador falle al devolver una pelota y esta se pierda por el fondo del campo sumara un punto al jugador contrario.
+
+## Contributing
+
+## History
+
+Es el proyecto final para el modulo "Programcion" del ciclo superior DAM1.
+Supone utilizar todos los conocimientos adquiridos para demostrar que somos capaces de hacer por nosotros mismos.
+
+## Credits
+
+Hecho por Marcos Alvarez Varela
+
+## License
+
+GNU
